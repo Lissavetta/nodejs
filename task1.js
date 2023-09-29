@@ -1,60 +1,55 @@
 class User {
 
-  constructor(name, age, address) {
+  constructor(name, age, city, street, house) {
     this.name = name;
 	this.age = age;
-	this.address = address;
-  }
+	this.city = city;
+	this.street = street;
+	this.house = house;
+
+}
 
   sayHi() {
-    console.log(`User information: ${this.name}, ${this.age}, ${this.address}`);
+    console.log(`User information: ${this.name}, ${this.age}, ${this.city}, ${this.street}, ${this.house}`);
   }
   
 }
 
 function getTotalAge(massiv){
 	let totalAge = 0;
-	for (let i = 0; i < massiv.length; i++){
-		totalAge += massiv[i].age;
-	}
-return totalAge;
+	massiv.forEach(element => {
+		totalAge+=element.age;
+	});
+	return totalAge;
 }
 
 function getUsersStreets(massiv){
-	let usersStreets = [];
-	for (let i = 0; i < massiv.length; i++){
-		usersStreets.push(massiv[i].address[1])
-	}
-return usersStreets;
+	let usersStreets = massiv.map(element=>element.street); // element = User in massive
+	return usersStreets;
 }
 
 function getOldPeople(massiv){
-	let oldPeople = [];
-	for (let i = 0; i < massiv.length; i++){
-		if (massiv[i].age > 60){
-		oldPeople.push(massiv[i]);
-		}
-	}
-return oldPeople;
+	let oldPeople = massiv.filter(element => element.age > 60);
+	return oldPeople;
 }
 
-let Users = [
-	user1 = new User("Alexander", 24, ['Moscow', 'Lenina', '12']),
-	user2 = new User("Maxim", 67, ['Vitebsk', 'Potato street', '5k1']),
-	user3 = new User("Vlad", 300, ['Sigioshara', 'Romanian street', '666']),
-	user4 = new User("Elizaveta", 20, ['Lobnya', 'Krupskoy', '24']),
-	user5 = new User("Ekaterina", 14, ['Lobnya', 'Pobedy', '14']),
-	user6 = new User("Nikolay", 45, ['Vodniki', 'Fizkulturnaya', '2'])
+const Users = [
+	new User("Alexander", 24, 'Moscow', 'Lenina', '12'),
+	new User("Maxim", 67, 'Vitebsk', 'Potato street', '5k1'),
+	new User("Vlad", 300, 'Sigioshara', 'Romanian street', '666'),
+	new User("Elizaveta", 20, 'Lobnya', 'Krupskoy', '24'),
+	new User("Ekaterina", 14, 'Lobnya', 'Pobedy', '14'),
+	new User("Nikolay", 45, 'Vodniki', 'Fizkulturnaya', '2')
 ]
 
 
-let totalAge = getTotalAge(Users);
+const totalAge = getTotalAge(Users);
 console.log(totalAge);
 
-let usersStreets = getUsersStreets(Users);
+const usersStreets = getUsersStreets(Users);
 console.log(usersStreets);
 
-let oldPeople = getOldPeople(Users);
+const oldPeople = getOldPeople(Users);
 for(let i = 0; i < oldPeople.length; i++){
 	oldPeople[i].sayHi();
 }

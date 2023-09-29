@@ -9,13 +9,13 @@ class User {
 	}
 }
   
-let userList = [
-	user1 = new User(1, "Alexander", 10),
-	user2 = new User(2, "Olga", 23),
-	user3 = new User(17, "Matthew", 47),
-	user4 = new User(989, "Dominic", 25),
-	user5 = new User(3, "Gendalf", 2000),
-	user6 = new User(4, "Sirius", 38)
+const userList = [
+	new User(1, "Alexander", 10),
+	new User(2, "Olga", 23),
+	new User(17, "Matthew", 47),
+	new User(989, "Dominic", 25),
+	new User(3, "Gendalf", 2000),
+	new User(4, "Sirius", 38)
 ]
   
 function sleep(time) {
@@ -62,7 +62,7 @@ return loadedUsers;
 }
 
 async function task2(){
-	let findUserIds = [1, 2, 3, 4];
+	const findUserIds = [1, 2, 3, 4];
 	await loadUsersSquentially(findUserIds);
 	await loadUsersInParallel(findUserIds);
 }
